@@ -36,3 +36,9 @@ sudo yum install git
         docker docs dokumanları
 
         ****
+        ssh -i "oliver.pem" ec2-user@ec2-3-84-200-144.compute-1.amazonaws.com "touch aaa bbb ; ls"
+
+        ***
+
+        mssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no  \
+     --region us-east-1 <instance ID> "docker swarm join-token worker | grep -i 'docker')"
