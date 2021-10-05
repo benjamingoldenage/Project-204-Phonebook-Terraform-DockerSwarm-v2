@@ -1,0 +1,34 @@
+sudo yum update -y
+sudo yum install -y yum-utils
+sudo yum-config-manager --add-repo https://rpm.releases.hashicorp.com/AmazonLinux/hashicorp.repo
+sudo yum -y install terraform
+terraform version
+
+sudo yum install git
+
+****
+* INFRASTRUCTURE
+    - public github repo
+    - docker swarm
+        - 3 manager
+        - 2 worker
+            - her biri birbirleri ile görüşebilmeli
+            - ec2instance connect cli
+            - IAM polcy
+        - leader manager ECR dan imaj çekmeli ve göndermeli
+        - ECR full access için policy
+        - diğer manager ve worker'larda ECR'dan imaj çekebilmeli
+    - image repo olarak AWS ECR oluşturulacak
+    - main.tf
+* APPLICATION
+    - Dockerfile
+        -app-server için kullanılacak imajı bu Dockerfile ile oluşturuyoruz
+        - gereken dosyalar;
+            - phonebook-app.py
+            - requirements.txt
+            - templates
+    - docker-compose.yml
+        - services: app-server ve mysql
+        - app-server imajı ECR'dan çekilecek
+
+        ****
